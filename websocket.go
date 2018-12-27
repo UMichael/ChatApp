@@ -38,8 +38,6 @@ func handleconnection(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		broadcast <- msg
-		//name, p, errs := ws.ReadMessage()
-		//fmt.Println(name, p, errs)
 		fmt.Println("connection ", broadcast)
 	}
 }
@@ -59,11 +57,9 @@ func handlemessages() {
 	}
 }
 func main() {
-	//this is how we server directory
 	fs := http.FileServer(http.Dir("."))
 	http.Handle("/", fs)
-	//like google.com/ws you get going to run it now
 	http.HandleFunc("/ws", handleconnection)
 	go handlemessages()
-	http.ListenAndServe(":8000", nil)
+	http.ListenAndServe(":8080", nil)
 }
