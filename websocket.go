@@ -57,7 +57,7 @@ func handlemessages() {
 	}
 }
 func main() {
-	fs := http.FileServer(http.Dir("."))
+	fs := http.FileServer(http.Dir("./template"))
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", handleconnection)
 	go handlemessages()
