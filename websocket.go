@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/websocket"
 )
@@ -57,6 +58,10 @@ func handlemessages() {
 	}
 }
 func main() {
+	host, port := os.Getenv("HOST"), os.Getenv("PORT")
+	if port == nil{
+		port=8080
+	}
 	fs := http.FileServer(http.Dir("./template"))
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", handleconnection)
