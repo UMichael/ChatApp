@@ -1,0 +1,13 @@
+build:
+
+  languages:
+
+    - go
+  pre:
+    - go get github.com/gorilla/websocket
+
+
+
+run:
+  
+  web: ChatApp
