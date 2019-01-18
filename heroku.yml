@@ -1,7 +1,5 @@
 build:
-  languages:
-    - go
-  pre:
-    - go get github.com/gorilla/websocket
+  language: go
+  script: go get github.com/gorilla/websocket
 run:
   web: ChatApp
