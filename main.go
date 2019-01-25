@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -62,6 +63,6 @@ func main() {
 	go handlemessages()
 	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
-
+	fmt.Println("hello")
 	http.ListenAndServe(":"+port, nil)
 }
