@@ -1,7 +1,7 @@
 {
 	"comment": "",
 	"ignore": "test",
-<<<<<<< HEAD
+
 	"package": [
 		{
 			"checksumSHA1": "EFilcRi6b0Bf3nckKo3UbeqoW50=",
@@ -10,8 +10,5 @@
 			"revisionTime": "2018-12-06T07:02:39Z"
 		}
 	],
-=======
-	"package": [],
->>>>>>> ec574a4c43e8373726295277a5d4dc2025426270
 	"rootPath": "websockets"
 }
