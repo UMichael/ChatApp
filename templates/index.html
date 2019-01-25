@@ -76,7 +76,7 @@
     },
     created: function() {
         var self = this;
-      var host =  location.protocol.replace("http","ws") + "://" + location.host + "/ws");
+      var host =  ( "ws://" + location.host + "/ws");
 
 
         this.ws = new WebSocket(host);
