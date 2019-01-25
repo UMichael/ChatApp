@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -39,7 +38,6 @@ func handleconnection(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		broadcast <- msg
-		fmt.Println("connection ", broadcast)
 	}
 }
 func handlemessages() {
@@ -54,7 +52,6 @@ func handlemessages() {
 			}
 
 		}
-		fmt.Println("handle ", msg)
 	}
 }
 func main() {
@@ -62,8 +59,8 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	fs := http.FileServer(http.Dir("./templates"))
-	http.Handle("/", fs)
+
+	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
 	go handlemessages()
 	http.ListenAndServe(":"+port, nil)
