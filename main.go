@@ -66,5 +66,9 @@ func main() {
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", handleconnection)
 	go handlemessages()
+<<<<<<< HEAD:main.go
 	http.ListenAndServe(port, nil)
+=======
+	http.ListenAndServe(":"+port, nil)
+>>>>>>> ec574a4c43e8373726295277a5d4dc2025426270:main.go
 }
