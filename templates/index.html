@@ -76,7 +76,9 @@
     },
     created: function() {
         var self = this;
-        var host = location.origin.replace(/^https/, 'ws')
+      var host =  location.protocol.replace("http","ws") + "://" + location.host + "/ws");
+
+
         this.ws = new WebSocket(host);
 
         this.ws.addEventListener('message', function(e) {
