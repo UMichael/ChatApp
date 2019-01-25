@@ -58,13 +58,13 @@ func handlemessages() {
 	}
 }
 func main() {
-	host, port := os.Getenv("HOST"), os.Getenv("PORT")
-	if port == nil{
-		port=8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
-	fs := http.FileServer(http.Dir("./template"))
+	fs := http.FileServer(http.Dir("./templates"))
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", handleconnection)
 	go handlemessages()
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":"+port, nil)
 }
