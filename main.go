@@ -59,9 +59,9 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-
+	go handlemessages()
 	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
-	go handlemessages()
+
 	http.ListenAndServe(":"+port, nil)
 }
