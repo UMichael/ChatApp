@@ -59,9 +59,12 @@ func handlemessages() {
 }
 func main() {
 	port := os.Getenv("HTTP_PLATFORM_PORT")
-    if port == "" {
-      port = "3000"
-    }
+	    if port == "" {
+		    port=os.Getenv("PORT")
+	    }
+	if port == ""{
+		port="8080"
+	}
 	go handlemessages()
 	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
