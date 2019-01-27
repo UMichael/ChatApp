@@ -67,5 +67,5 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
 	fmt.Println("hello")
-	http.ListenAndServe(":"+port, nil)
+	http.ListenAndServe(":"+os.Getenv("HTTP\_PLATFORM\_PORT"), nil)
 }
