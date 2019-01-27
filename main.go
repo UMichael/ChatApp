@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -59,13 +58,12 @@ func handlemessages() {
 	}
 }
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
+	port := os.Getenv("HTTP_PLATFORM_PORT")
+    if port == "" {
+      port = "3000"
+    }
 	go handlemessages()
 	http.Handle("/", http.FileServer(http.Dir("./templates")))
 	http.HandleFunc("/ws", handleconnection)
-	fmt.Println("hello")
-	http.ListenAndServe(":"+os.Getenv("HTTP\_PLATFORM\_PORT"), nil)
+	http.ListenAndServe(":"+port, nil)
 }
